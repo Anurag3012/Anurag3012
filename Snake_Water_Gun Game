@@ -1,0 +1,41 @@
+import random
+lst = ["snake", "water", "gun"]
+n = 4
+comp1 = 0 #add computer points
+you = 0  #add user points
+while True:
+    comp = random.choice(lst)
+    n1 = input("\n\nChoose anyone\n"
+                 "1.Snake\n"
+                 "2.Water\n"
+                 "3.Gun\n")
+    n = n - 1
+    #condition for same input
+    if (n1 == "snake" and comp == "snake") or (n1 == "water" and comp == "water") or (n1 == "gun" and comp == "gun") and (n > 0):
+        print("same choice", n1 ,"and", comp)
+        print("Tie \t\t\t\t ",n,"chances left")
+        continue
+    #condition when user win
+    elif (n1 == "snake" and comp == "water") or (n1 == "water" and comp == "gun") or (n1 == "gun" and comp == "snake") and (n > 0):
+        print("you choose", n1 ,"and","computer choose", comp)
+        print("you Win \t\t\t\t ", n ,"chances left")
+        you = you + 1
+        continue
+    #conditin when computer win
+    elif (n1 == "snake" and comp == "gun") or (n1 == "water" and comp == "snake") or (n1 == "gun" and comp == "water") and (n > 0):
+        print("you choose", n1, "and", "computer choose", comp)
+        print(" you lose \t\t\t\t ", n ,"chances left")
+        comp1 = comp1 + 1
+        continue
+    elif (n == 0) and (you > comp1):
+            print("your points", you, "and computer points", comp1)
+            print("winner winner chicken dinner\n")
+            break
+    elif (n == 0) and (you < comp1):
+            print("your points", you, "and computer points", comp1)
+            print("loser\n")
+            break
+    elif (n == 0) and (you == comp1):
+            print("your points", you, "and computer points", comp1)
+            print("Tie both are winners\n")
+            break
